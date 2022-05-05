@@ -4,7 +4,7 @@ use text_to_png::{Color, TextRenderer};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn text_to_png(font: Vec<u8>, text: String, color: String) -> Vec<u8> {
+pub fn text_to_png(font: Vec<u8>, text: String, size: u32, color: String) -> Vec<u8> {
     let renderer = TextRenderer::try_new_with_ttf_font_data(font).unwrap();
     let color: Color = if color.starts_with("#") {
         let rr = &color[1..3];
@@ -18,6 +18,6 @@ pub fn text_to_png(font: Vec<u8>, text: String, color: String) -> Vec<u8> {
     } else {
         color.as_str().try_into().unwrap()
     };
-    let text_png = renderer.render_text_to_png_data(text, 64, color).unwrap();
+    let text_png = renderer.render_text_to_png_data(text, size, color).unwrap();
     text_png.data
 }

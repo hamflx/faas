@@ -25,7 +25,7 @@ router.get("/:font/:size/:text", (ctx) => {
   }
 
   ctx.response.type = "image/png"
-  ctx.response.body = text_to_png(fontData, text, color)
+  ctx.response.body = text_to_png(fontData, text, sizeInPx, color)
 })
 
 init()

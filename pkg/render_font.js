@@ -85,10 +85,11 @@ function getArrayU8FromWasm0(ptr, len) {
 /**
 * @param {Uint8Array} font
 * @param {string} text
+* @param {number} size
 * @param {string} color
 * @returns {Uint8Array}
 */
-export function text_to_png(font, text, color) {
+export function text_to_png(font, text, size, color) {
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
         const ptr0 = passArray8ToWasm0(font, wasm.__wbindgen_malloc);
@@ -97,7 +98,7 @@ export function text_to_png(font, text, color) {
         const len1 = WASM_VECTOR_LEN;
         const ptr2 = passStringToWasm0(color, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
         const len2 = WASM_VECTOR_LEN;
-        wasm.text_to_png(retptr, ptr0, len0, ptr1, len1, ptr2, len2);
+        wasm.text_to_png(retptr, ptr0, len0, ptr1, len1, size, ptr2, len2);
         var r0 = getInt32Memory0()[retptr / 4 + 0];
         var r1 = getInt32Memory0()[retptr / 4 + 1];
         var v3 = getArrayU8FromWasm0(r0, r1).slice();
