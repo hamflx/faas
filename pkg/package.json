@@ -1,0 +1,12 @@
+{
+  "name": "@hamflx/render-font",
+  "version": "0.1.0",
+  "files": [
+    "render_font_bg.wasm",
+    "render_font.js",
+    "render_font.d.ts"
+  ],
+  "module": "render_font.js",
+  "types": "render_font.d.ts",
+  "sideEffects": false
+}
