@@ -42,12 +42,12 @@ app.addEventListener(
 )
 await app.listen({ port: 8091 })
 
-function initializeFonts() {
-  for (const entry of Deno.readDirSync('./fonts')) {
+async function initializeFonts() {
+  for await (const entry of Deno.readDir('./fonts')) {
     const fontFamily = removeFilenameExt(path.basename(entry.name))
     const fontPath = path.resolve('./fonts', entry.name)
     console.log(`==> loading font ${fontFamily}:${fontPath}`)
-    fontMap.set(fontFamily, Deno.readFileSync(fontPath))
+    fontMap.set(fontFamily, await Deno.readFile(fontPath))
   }
 }
 
